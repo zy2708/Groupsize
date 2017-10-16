@@ -1,4 +1,4 @@
-mport javafx.application.Application;
+import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import javafx.scene.control.Dialog;
