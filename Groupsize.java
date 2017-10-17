@@ -49,29 +49,52 @@ public class Groupsize extends Application
 
             if(username.getText().equals("csc200")&&password.getText().equals("ct0103")){
                 TextInputDialog textInputDialog = new TextInputDialog("Number of people");
+                textInputDialog.setTitle("Number of people");
+                textInputDialog.setHeaderText("Please enter the number of people");
                 Optional<String> num = textInputDialog.showAndWait();
                 String number = num.get();
                 double peoplenumber = Double.parseDouble(number);
-                if (peoplenumber >= 10) {
+                if (peoplenumber > 10) {
                     double groupsize = peoplenumber / 2;
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Groupsize");
                     alert.setHeaderText("Groupsize");
                     alert.setContentText("The number of people is " + peoplenumber + " ." + "Groupsize is " + groupsize + " .");
-                    alert.show();
+                    alert.showAndWait();
                 } else if (3 <= peoplenumber) {
                     double groupsize = peoplenumber / 3;
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Groupsize");
                     alert.setHeaderText("Groupsize");
                     alert.setContentText("The number of people is " + peoplenumber + " ." + "Groupsize is " + groupsize + " .");
-                    alert.show();
+                    alert.showAndWait();
                 } else if (peoplenumber < 3) {
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Groupsize");
                     alert.setHeaderText("Groupsize");
                     alert.setContentText("The number of people has to be at least 3.");
-                    alert.show();
+                    alert.showAndWait();
+                }
+                TextInputDialog teamsizeinputdialog=new TextInputDialog("Number of player");
+                teamsizeinputdialog.setTitle("Number of player");
+                teamsizeinputdialog.setHeaderText("Please enter the number of player");
+                Optional<String> playernum= teamsizeinputdialog.showAndWait();
+                String playernumber=playernum.get();
+                double numberofplayers=Double.parseDouble(playernumber);
+                if (11<=numberofplayers&&numberofplayers<=55){
+                    double teamsize = numberofplayers / 11;
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Teamsize");
+                    alert.setHeaderText("Teamsize");
+                    alert.setContentText("The number of player is " + numberofplayers + " ." + "Teamsize is " + teamsize + " .");
+                    alert.showAndWait();
+                }
+                else{
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Teamsize");
+                    alert.setHeaderText("Teamsize");
+                    alert.setContentText("The number of player is " + numberofplayers + " ." + "Teamsize is " + 1 + " .");
+                    alert.showAndWait();
                 }
                 login=true;
                 n=0;
@@ -81,14 +104,14 @@ public class Groupsize extends Application
                 alert.setTitle("Error");
                 alert.setHeaderText("Your username or password is wrong.");
                 alert.setContentText("Please enter your username and password again.");
-                alert.show();
+                alert.showAndWait();
             }
             else if(username.getText().equals("csc200")&&!password.getText().equals("ct0103")&&n<2){
                 Alert alert =new Alert (AlertType.INFORMATION);
                 alert.setTitle("Error");
                 alert.setHeaderText("Your username or password is wrong.");
                 alert.setContentText("Please enter your username and password again.");
-                alert.show();
+                alert.showAndWait();
                 n++;
             }
             else if (username.getText().equals("csc200")&&!password.getText().equals("ct0103")&&n==2){
@@ -96,7 +119,7 @@ public class Groupsize extends Application
                 alert.setTitle("Error");
                 alert.setHeaderText("You have entered wrong password three times.");
                 alert.setContentText("Please contact admistrator.");
-                alert.show();
+                alert.showAndWait();
                 n++;
             }
         }while(!login&&n<=2);
@@ -106,4 +129,3 @@ public class Groupsize extends Application
         launch(args);
     }
 }
-
